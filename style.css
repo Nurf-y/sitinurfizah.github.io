@@ -165,5 +165,291 @@ body {
     .profile-pic {
         width: 200px;
         height: 200px;
-    }
+    }/* ===== Education Page Styles ===== */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: var(--pastel-blue);
+    top: 0;
+    bottom: 0;
+    left: 50px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.timeline-date {
+    position: absolute;
+    left: -120px;
+    width: 100px;
+    text-align: right;
+    font-weight: bold;
+    color: var(--pastel-purple);
+}
+
+.timeline-content {
+    margin-left: 80px;
+}
+
+.institution {
+    color: var(--pastel-pink);
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+/* ===== Skills Page Styles ===== */
+.skills-container {
+    display: grid;
+    gap: 2rem;
+}
+
+.skills-category {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.skill-bar-container {
+    margin-top: 1rem;
+}
+
+.skill-bar {
+    height: 25px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    color: white;
+    border-radius: 4px;
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 1rem;
+}
+
+.tech-tag {
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.certification-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.cert-card {
+    padding: 1.5rem;
+    border-radius: 8px;
+    position: relative;
+    min-height: 150px;
+}
+
+.cert-badge {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 2rem;
+    color: rgba(255,255,255,0.3);
+}
+
+/* ===== Projects Page Styles ===== */
+.project-filters {
+    display: flex;
+    gap: 10px;
+    margin: 2rem 0;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    border: none;
+    background: #e9ecef;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active {
+    background: var(--pastel-purple);
+    color: white;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-img {
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    color: white;
+}
+
+.project-info {
+    padding: 1.5rem;
+}
+
+.project-tech {
+    display: flex;
+    gap: 8px;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+}
+
+.project-tech span {
+    background: #e9ecef;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--pastel-purple);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* ===== Experience Page Styles ===== */
+.experience-timeline {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.exp-card {
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.exp-date {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: var(--dark-text);
+}
+
+.company {
+    color: var(--pastel-pink);
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+/* ===== Contact Page Styles ===== */
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.contact-method {
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.contact-method i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.contact-method a {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 5px 15px;
+    background: white;
+    color: var(--dark-text);
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.form-group textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+.submit-btn {
+    background: var(--pastel-purple);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: var(--pastel-pink);
+}
+
+/* ===== Background Color Classes ===== */
+.pastel-blue-bg { background-color: var(--pastel-blue); }
+.pastel-pink-bg { background-color: var(--pastel-pink); }
+.pastel-purple-bg { background-color: var(--pastel-purple); }
+.pastel-green-bg { background-color: var(--pastel-green); }
+.pastel-yellow-bg { background-color: var(--pastel-yellow); }
+
+.pastel-blue { background-color: var(--pastel-blue); color: white; }
+.pastel-pink { background-color: var(--pastel-pink); color: white; }
+.pastel-purple { background-color: var(--pastel-purple); color: white; }
+.pastel-green { background-color: var(--pastel-green); color: var(--dark-text); }
+.pastel-yellow { background-color: var(--pastel-yellow); color: var(--dark-text); }
 }
