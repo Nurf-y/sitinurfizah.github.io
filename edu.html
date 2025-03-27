@@ -7,9 +7,59 @@
     <style>
         :root {
             --neon-purple: #9d00ff;
+            --neon-blue: #0ff0fc;
             --pastel-blue: #D4F1F9;
             --pastel-peach: #FFE5D4;
         }
+        
+        /* Fixed Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 0.5rem 0;
+        }
+        .nav-grid {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        .nav-item {
+            padding: 0.8rem 1.2rem;
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            position: relative;
+            border-radius: 50px;
+        }
+        .nav-item::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--neon-color);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+        .nav-item:hover::before {
+            transform: scaleX(1);
+        }
+        .nav-about { --neon-color: var(--neon-blue); }
+        .nav-edu { --neon-color: var(--neon-purple); }
+        .nav-skills { --neon-color: #ff2a6d; }
+        .nav-projects { --neon-color: #ff073a; }
+        .nav-exp { --neon-color: var(--neon-blue); }
+        .nav-contact { --neon-color: var(--neon-purple); }
+
+        /* Main Content */
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-peach));
@@ -20,7 +70,7 @@
         }
         .container {
             max-width: 900px;
-            margin: 2rem auto;
+            margin: 5rem auto 2rem;
             padding: 1.5rem;
             background: white;
             border-radius: 8px;
@@ -43,59 +93,220 @@
             0% { background-position: 0% 0%; }
             100% { background-position: 0% 200%; }
         }
-        h1 {
-            color: var(--neon-purple);
-            border-bottom: 2px solid rgba(0,0,0,0.1);
-            padding-bottom: 0.5rem;
+
+        /* Education Bubbles */
+        .education-bubble {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: all 0.3s;
         }
-        h2 {
-            margin-top: 1.5rem;
-            color: var(--neon-purple);
+        .education-bubble::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--bubble-color);
         }
+        .education-bubble::after {
+            content: var(--bubble-icon);
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            font-size: 4rem;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        .education-bubble:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border-color: var(--bubble-color);
+        }
+        
+        /* Bubble Types */
+        .bubble-umk {
+            --bubble-color: var(--neon-purple);
+            --bubble-icon: "🎓";
+            animation: floatUp 4s ease-in-out infinite;
+        }
+        .bubble-project {
+            --bubble-color: #7d4bff;
+            --bubble-icon: "📊";
+            animation: floatUp 4s ease-in-out infinite 0.5s;
+        }
+        .bubble-school {
+            --bubble-color: #b36bff;
+            --bubble-icon: "🏫";
+            animation: floatUp 4s ease-in-out infinite 1s;
+        }
+        
+        @keyframes floatUp {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        /* Education Icons */
+        .bubble-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+            float: left;
+            color: var(--bubble-color);
+        }
+        
+        /* Photo Spot */
         .photo-spot {
-            float: right;
             width: 150px;
             height: 150px;
-            margin: 0 0 1rem 1rem;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
             border: 3px solid white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            background: #eee;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            background: #eee url('your-photo.jpg') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #999;
+            position: relative;
+            overflow: hidden;
+        }
+        .photo-spot::before {
+            content: "📚";
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.1;
+        }
+        
+        h1 {
+            color: var(--neon-purple);
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        h1::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--neon-purple), transparent);
+            margin: 0.5rem auto 0;
+        }
+        
+        h2 {
+            color: var(--bubble-color);
+            margin-top: 0;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: white;
+            border-radius: 50px;
+            color: var(--neon-purple);
+            text-decoration: none;
+            border: 1px solid var(--neon-purple);
+            transition: all 0.3s;
+        }
+        .back-link:hover {
+            background: var(--neon-purple);
+            color: white;
+        }
+        
+        /* Conveyor Belt Animation */
+        .conveyor-effect {
+            height: 3px;
+            background: repeating-linear-gradient(
+                90deg,
+                var(--neon-purple),
+                var(--neon-purple) 20px,
+                transparent 20px,
+                transparent 40px
+            );
+            animation: conveyorBelt 2s linear infinite;
+            margin: 2rem 0;
+        }
+        @keyframes conveyorBelt {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 0%; }
+        }
+        
+        /* Diploma Scroll Effect */
+        .diploma-icon {
+            display: inline-block;
+            animation: scrollOpen 2s ease-in-out infinite;
+            transform-origin: top center;
+        }
+        @keyframes scrollOpen {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(1.1); }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Fixed Navigation -->
+    <header>
+        <div class="nav-grid">
+            <a href="about.html" class="nav-item nav-about">About</a>
+            <a href="edu.html" class="nav-item nav-edu">Education</a>
+            <a href="skills.html" class="nav-item nav-skills">Skills</a>
+            <a href="projects.html" class="nav-item nav-projects">Projects</a>
+            <a href="experience.html" class="nav-item nav-exp">Experience</a>
+            <a href="contact.html" class="nav-item nav-contact">Contact</a>
+        </div>
+    </header>
+
+    <!-- Page Content -->
     <div class="container">
-        <h1>Education</h1>
-        <div class="photo-spot">[UMK Campus]</div>
-        <h2>Universiti Malaysia Kelantan (UMK) | 2020–2024</h2>
-        <p>Bachelor's Degree in Entrepreneurship (Logistics & Distribution Trade)</p>
-        <ul>
-            <li>Gained expertise in supply chain management, logistics strategy, and market research</li>
-            <li>Developed strong analytical and business decision-making skills through coursework and real-world projects</li>
-        </ul>
+        <h1>My Education Journey</h1>
         
-        <h2>Final Year Project – Reverse Logistics Research</h2>
-        <p>Project Title: Factors Influencing Customer Satisfaction on Reverse Logistics in Shopee Among University Students in the Eastern State of Malaysia</p>
-        <ul>
-            <li>Role: Researcher & Data Analyst</li>
-            <li>Conducted extensive research on reverse logistics trends</li>
-            <li>Analyzed survey data to determine customer satisfaction factors</li>
-            <li>Collected and analyzed responses from 150 participants across Malaysia</li>
-            <li>Assisted supervisor in finding relevant articles and structuring research papers</li>
-        </ul>
+        <div class="photo-spot"></div>
         
-        <h2>Sekolah Menengah Kebangsaan Sook | 2017</h2>
-        <ul>
-            <li>Sijil Pelajaran Malaysia (SPM) – Built a strong academic foundation in analytical thinking, problem-solving, and communication</li>
-            <li>Sijil Tinggi Persekolahan Malaysia (STPM) – Strengthened research, data analysis, and critical thinking skills</li>
-            <li>Malaysian University English Test (MUET) – Band 4: Demonstrated proficiency in reading, writing, listening, and speaking</li>
-        </ul>
-        <a href="index.html">← Back to Home</a>
+        <div class="conveyor-effect"></div>
+        
+        <div class="education-bubble bubble-umk">
+            <div class="bubble-icon">🏛️</div>
+            <h2>Universiti Malaysia Kelantan (UMK) | 2020–2024</h2>
+            <p>Bachelor's Degree in Entrepreneurship (Logistics & Distribution Trade)</p>
+            <ul>
+                <li>Gained expertise in supply chain management, logistics strategy, and market research</li>
+                <li>Developed strong analytical and business decision-making skills through coursework and real-world projects</li>
+            </ul>
+            <div class="diploma-icon">📜</div>
+        </div>
+        
+        <div class="education-bubble bubble-project">
+            <div class="bubble-icon">🔍</div>
+            <h2>Final Year Project – Reverse Logistics Research</h2>
+            <p>Project Title: Factors Influencing Customer Satisfaction on Reverse Logistics in Shopee Among University Students in the Eastern State of Malaysia</p>
+            <ul>
+                <li>Role: Researcher & Data Analyst</li>
+                <li>Conducted extensive research on reverse logistics trends</li>
+                <li>Analyzed survey data from 150 participants across Malaysia</li>
+                <li>Assisted in structuring research papers</li>
+            </ul>
+        </div>
+        
+        <div class="education-bubble bubble-school">
+            <div class="bubble-icon">✏️</div>
+            <h2>Sekolah Menengah Kebangsaan Sook | 2017</h2>
+            <ul>
+                <li>Sijil Pelajaran Malaysia (SPM) – Strong foundation in analytical thinking and communication</li>
+                <li>Sijil Tinggi Persekolahan Malaysia (STPM) – Enhanced research and critical thinking skills</li>
+                <li>Malaysian University English Test (MUET) – Band 4 proficiency</li>
+            </ul>
+        </div>
+        
+        <div style="text-align: center;">
+            <a href="index.html" class="back-link">← Back to Home</a>
+        </div>
     </div>
 </body>
 </html>
