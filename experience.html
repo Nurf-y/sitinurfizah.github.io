@@ -7,9 +7,61 @@
     <style>
         :root {
             --neon-blue: #0ff0fc;
+            --neon-green: #05f0a5;
+            --neon-orange: #ff7b25;
+            --neon-yellow: #ffd700;
             --pastel-blue: #D4F1F9;
             --pastel-peach: #FFE5D4;
         }
+        
+        /* Fixed Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 0.5rem 0;
+        }
+        .nav-grid {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        .nav-item {
+            padding: 0.8rem 1.2rem;
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            position: relative;
+            border-radius: 50px;
+        }
+        .nav-item::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--neon-color);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+        .nav-item:hover::before {
+            transform: scaleX(1);
+        }
+        .nav-about { --neon-color: var(--neon-blue); }
+        .nav-edu { --neon-color: #9d00ff; }
+        .nav-skills { --neon-color: #ff2a6d; }
+        .nav-projects { --neon-color: #ff073a; }
+        .nav-exp { --neon-color: var(--neon-green); }
+        .nav-contact { --neon-color: #9d00ff; }
+
+        /* Main Content */
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-peach));
@@ -20,7 +72,7 @@
         }
         .container {
             max-width: 900px;
-            margin: 2rem auto;
+            margin: 5rem auto 2rem;
             padding: 1.5rem;
             background: white;
             border-radius: 8px;
@@ -35,7 +87,7 @@
             left: 0;
             bottom: 0;
             width: 2px;
-            background: linear-gradient(to bottom, transparent, var(--neon-blue), transparent);
+            background: linear-gradient(to bottom, transparent, var(--neon-green), transparent);
             background-size: 100% 200%;
             animation: glowFlow 2.5s linear infinite;
         }
@@ -43,73 +95,295 @@
             0% { background-position: 0% 0%; }
             100% { background-position: 0% 200%; }
         }
-        h1 {
-            color: var(--neon-blue);
-            border-bottom: 2px solid rgba(0,0,0,0.1);
-            padding-bottom: 0.5rem;
+
+        /* Experience Bubbles - 3D Effect */
+        .experience-bubble {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 
+                0 5px 15px rgba(0,0,0,0.1),
+                0 10px 20px -5px rgba(0,0,0,0.08),
+                inset 0 -3px 0 rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            border-left: 5px solid var(--bubble-color);
+            transition: all 0.3s;
+            transform-style: preserve-3d;
         }
-        h2 {
-            margin-top: 1.5rem;
-            color: var(--neon-blue);
+        .experience-bubble::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--bubble-color);
         }
+        .experience-bubble::after {
+            content: var(--bubble-icon);
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            font-size: 5rem;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        .experience-bubble:hover {
+            transform: translateY(-5px) rotateX(5deg);
+            box-shadow: 
+                0 15px 30px rgba(0,0,0,0.15),
+                0 15px 25px -5px rgba(0,0,0,0.1),
+                inset 0 -5px 0 rgba(0,0,0,0.1);
+        }
+        
+        /* Bubble Types */
+        .bubble-logistics {
+            --bubble-color: var(--neon-green);
+            --bubble-icon: "🚛";
+            animation: floatUp 4s ease-in-out infinite;
+        }
+        .bubble-kitchen {
+            --bubble-color: var(--neon-orange);
+            --bubble-icon: "🍳";
+            animation: floatUp 4s ease-in-out infinite 0.5s;
+        }
+        .bubble-restaurant {
+            --bubble-color: var(--neon-yellow);
+            --bubble-icon: "🍽️";
+            animation: floatUp 4s ease-in-out infinite 0.8s;
+        }
+        .bubble-teaching {
+            --bubble-color: var(--neon-blue);
+            --bubble-icon: "📚";
+            animation: floatUp 4s ease-in-out infinite 1.1s;
+        }
+        
+        @keyframes floatUp {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        /* Job Title Styling */
+        .job-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        .job-icon {
+            font-size: 1.8rem;
+            margin-right: 1rem;
+            color: var(--bubble-color);
+        }
+        .job-header {
+            flex-grow: 1;
+        }
+        .job-company {
+            font-weight: 600;
+            color: var(--bubble-color);
+            margin: 0;
+        }
+        .job-period {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 0.2rem 0 0 0;
+        }
+        
+        /* Moving Snake Divider */
+        .snake-divider {
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--bubble-color), 
+                var(--bubble-color), 
+                transparent);
+            background-size: 200% 100%;
+            margin: 1.5rem 0;
+            animation: snakeMove 3s linear infinite;
+        }
+        @keyframes snakeMove {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        
+        /* Animated List Items */
+        .experience-bubble ul {
+            position: relative;
+            z-index: 1;
+        }
+        .experience-bubble li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+            transition: all 0.3s;
+        }
+        .experience-bubble li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--bubble-color);
+            animation: arrowPulse 1.5s infinite;
+        }
+        @keyframes arrowPulse {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(5px); }
+        }
+        
+        /* Photo Spot */
         .photo-spot {
-            float: right;
             width: 150px;
             height: 150px;
-            margin: 0 0 1rem 1rem;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
             border: 3px solid white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            background: #eee;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            background: #eee url('your-photo.jpg') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #999;
+            position: relative;
+            overflow: hidden;
+        }
+        .photo-spot::before {
+            content: "💼";
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.1;
+        }
+        
+        h1 {
+            color: var(--neon-green);
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        h1::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--neon-green), transparent);
+            margin: 0.5rem auto 0;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: white;
+            border-radius: 50px;
+            color: var(--neon-green);
+            text-decoration: none;
+            border: 1px solid var(--neon-green);
+            transition: all 0.3s;
+        }
+        .back-link:hover {
+            background: var(--neon-green);
+            color: white;
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Fixed Navigation -->
+    <header>
+        <div class="nav-grid">
+            <a href="about.html" class="nav-item nav-about">About</a>
+            <a href="edu.html" class="nav-item nav-edu">Education</a>
+            <a href="skills.html" class="nav-item nav-skills">Skills</a>
+            <a href="projects.html" class="nav-item nav-projects">Projects</a>
+            <a href="experience.html" class="nav-item nav-exp">Experience</a>
+            <a href="contact.html" class="nav-item nav-contact">Contact</a>
+        </div>
+    </header>
+
+    <!-- Page Content -->
     <div class="container">
-        <h1>Work Experience</h1>
-        <div class="photo-spot">[Workplace]</div>
+        <h1>Professional Experience</h1>
         
-        <h2>Logistics Intern</h2>
-        <p>Angkatan Koperasi Kebangsaan Malaysia (ANGKASA Sendirian Berhad)<br>
-        March – July 2024</p>
-        <ul>
-            <li>Inventory & Stock Management: Managed a stock inventory of 500+ maintaining a 95% accuracy rate in tracking and restocking</li>
-            <li>Supply Chain Coordination: Assisted in processing stock transactions weekly, ensuring smooth product flow and minimizing discrepancies</li>
-            <li>Customer Service & Order Processing: Handled 30–50 customer inquiries daily, ensuring timely resolution and achieving a 90% satisfaction rate</li>
-            <li>Logistics Support for Events: Coordinated promotional events, including Jualan Madani, overseeing logistics for 200+ attendees and ensuring smooth operations</li>
-            <li>Marketing & Promotional Materials: Designed promotional materials (banners, posters, flyers), increasing event engagement by 30%</li>
-            <li>Data & Reporting Management: Recorded sales and stock movement entries, ensuring accurate reporting for financial and inventory tracking</li>
-        </ul>
+        <div class="photo-spot"></div>
         
-        <h2>Kitchen Helper</h2>
-        <p>Green Earth Enterprise<br>
-        August 2024 – January 2025</p>
-        <ul>
-            <li>Food Preparation & Order Processing: Assisted in preparing and organizing 200+ meals daily, ensuring efficient food distribution and service</li>
-            <li>Inventory & Stock Control: Monitored kitchen supplies, ensuring timely restocking and minimizing shortages</li>
-            <li>Hygiene & Kitchen Maintenance: Maintained cleanliness and food safety standards, ensuring compliance with health regulations</li>
-        </ul>
+        <div class="experience-bubble bubble-logistics">
+            <div class="job-title">
+                <div class="job-icon">📦</div>
+                <div class="job-header">
+                    <h2 class="job-company">Angkatan Koperasi Kebangsaan Malaysia</h2>
+                    <p class="job-period">Logistics Intern | March – July 2024</p>
+                </div>
+            </div>
+            
+            <div class="snake-divider"></div>
+            
+            <ul>
+                <li>Managed inventory of 500+ items with 95% accuracy in tracking</li>
+                <li>Processed weekly stock transactions minimizing discrepancies</li>
+                <li>Handled 30-50 customer inquiries daily with 90% satisfaction</li>
+                <li>Coordinated logistics for events with 200+ attendees</li>
+                <li>Designed promotional materials increasing engagement by 30%</li>
+                <li>Maintained accurate sales and inventory reporting</li>
+            </ul>
+        </div>
         
-        <h2>Restaurant Cashier & Food Packer</h2>
-        <p>The H Cafe Kelantan<br>
-        2022 – August 2023</p>
-        <ul>
-            <li>Order Processing & Customer Service: Managed and packed 150+ food orders daily, ensuring fast and accurate service</li>
-            <li>Transaction & Financial Handling: Processed RM 2,000+ in daily transactions, maintaining accurate cash balancing</li>
-            <li>Online Order Management & Record-Keeping: Handled 50+ online orders per week, ensuring precise record-keeping for smooth order fulfillment</li>
-        </ul>
+        <div class="experience-bubble bubble-kitchen">
+            <div class="job-title">
+                <div class="job-icon">👨‍🍳</div>
+                <div class="job-header">
+                    <h2 class="job-company">Green Earth Enterprise</h2>
+                    <p class="job-period">Kitchen Helper | August 2024 – January 2025</p>
+                </div>
+            </div>
+            
+            <div class="snake-divider"></div>
+            
+            <ul>
+                <li>Prepared and organized 200+ meals daily</li>
+                <li>Monitored kitchen supplies and inventory</li>
+                <li>Maintained food safety and hygiene standards</li>
+            </ul>
+        </div>
         
-        <h2>Aid Teacher – KAFA | 2020 – 2021 (KGLB)</h2>
-        <ul>
-            <li>Assisted in teaching Quranic studies and Islamic education to 30+ students per class</li>
-            <li>Managed classroom activities, ensuring an engaging and disciplined learning environment</li>
-            <li>Provided administrative support, including student attendance tracking and lesson material preparation</li>
-        </ul>
-        <a href="index.html">← Back to Home</a>
+        <div class="experience-bubble bubble-restaurant">
+            <div class="job-title">
+                <div class="job-icon">🍴</div>
+                <div class="job-header">
+                    <h2 class="job-company">The H Cafe Kelantan</h2>
+                    <p class="job-period">Cashier & Food Packer | 2022 – August 2023</p>
+                </div>
+            </div>
+            
+            <div class="snake-divider"></div>
+            
+            <ul>
+                <li>Processed 150+ food orders daily with accuracy</li>
+                <li>Handled RM 2,000+ in daily transactions</li>
+                <li>Managed 50+ online orders weekly</li>
+            </ul>
+        </div>
+        
+        <div class="experience-bubble bubble-teaching">
+            <div class="job-title">
+                <div class="job-icon">📝</div>
+                <div class="job-header">
+                    <h2 class="job-company">KAFA (KGLB)</h2>
+                    <p class="job-period">Aid Teacher | 2020 – 2021</p>
+                </div>
+            </div>
+            
+            <div class="snake-divider"></div>
+            
+            <ul>
+                <li>Taught Quranic studies to 30+ students per class</li>
+                <li>Managed classroom activities and discipline</li>
+                <li>Handled administrative tasks and materials</li>
+            </ul>
+        </div>
+        
+        <div style="text-align: center;">
+            <a href="index.html" class="back-link">← Back to Home</a>
+        </div>
     </div>
 </body>
 </html>
