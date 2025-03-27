@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills | SitiNurfizah</title>
+    <style>
+        :root {
+            --neon-pink: #ff2a6d;
+            --pastel-blue: #D4F1F9;
+            --pastel-peach: #FFE5D4;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-peach));
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, var(--neon-pink), transparent);
+            background-size: 100% 200%;
+            animation: glowFlow 2.5s linear infinite;
+        }
+        @keyframes glowFlow {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 0% 200%; }
+        }
+        h1 {
+            color: var(--neon-pink);
+            border-bottom: 2px solid rgba(0,0,0,0.1);
+            padding-bottom: 0.5rem;
+        }
+        h2 {
+            margin-top: 1.5rem;
+            color: var(--neon-pink);
+        }
+        .photo-spot {
+            float: right;
+            width: 150px;
+            height: 150px;
+            margin: 0 0 1rem 1rem;
+            border: 3px solid white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Skills & Certifications</h1>
+        <div class="photo-spot">[Certifications]</div>
+        
+        <h2>Technical & Digital Skills</h2>
+        <ul>
+            <li>Microsoft Office Suite (Word, Excel, PowerPoint) – Intermediate</li>
+            <li>Google Workspace (Docs, Sheets, Slides) – Intermediate</li>
+            <li>Canva & Web Design – Proficient</li>
+            <li>Data Research & Analysis – Strong Analytical Skills</li>
+            <li>Basic Programming & Cybersecurity (Kali Linux, Network Security)</li>
+            <li>Wix, GitHub, Python, Google WordPress</li>
+        </ul>
+        
+        <h2>Professional & Soft Skills</h2>
+        <ul>
+            <li>Logistics & Inventory Management</li>
+            <li>Customer Service & Sales Support</li>
+            <li>Marketing & Content Creation (Posters, Banners, Promotions)</li>
+            <li>Event & Technical Management</li>
+            <li>Problem-Solving & Adaptability</li>
+        </ul>
+        
+        <h2>Certifications & Training</h2>
+        <h3>Professional Certifications</h3>
+        <ul>
+            <li>Social Media Marketing & Paid Advertising (TikTok & Facebook) – Mastered digital marketing strategies, ad targeting, and content optimization</li>
+            <li>Microsoft Excel: Tips & Tricks – Improved data management, reporting efficiency, and automation techniques</li>
+            <li>Web Design & Canva Training – Gained hands-on experience in creating marketing materials and website layouts</li>
+            <li>Quality Culture & Service Excellence – Developed a strong understanding of customer service standards and quality assurance</li>
+            <li>Cybersecurity & CompTIA Training – Hands-on experience in network security, penetration testing, and ethical hacking</li>
+        </ul>
+        
+        <h3>Professional Memberships</h3>
+        <ul>
+            <li>Member of the Chartered Institute of Logistics and Transport (CILT) – Recognized as part of a global professional body for logistics and supply chain professionals</li>
+        </ul>
+        <a href="index.html">← Back to Home</a>
+    </div>
+</body>
+</html>
