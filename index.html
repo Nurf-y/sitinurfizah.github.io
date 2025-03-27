@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SitiNurfizah | Portfolio</title>
+    <style>
+        :root {
+            --neon-blue: #0ff0fc;
+            --neon-purple: #9d00ff;
+            --neon-pink: #ff2a6d;
+            --neon-red: #ff073a;
+            --pastel-blue: #D4F1F9;
+            --pastel-peach: #FFE5D4;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-peach));
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 2rem;
+        }
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            max-width: 500px;
+        }
+        .nav-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .nav-item::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--neon-color);
+            animation: glowFlow 2.5s linear infinite;
+        }
+        .nav-item:nth-child(1) { --neon-color: var(--neon-blue); }
+        .nav-item:nth-child(2) { --neon-color: var(--neon-purple); }
+        .nav-item:nth-child(3) { --neon-color: var(--neon-pink); }
+        .nav-item:nth-child(4) { --neon-color: var(--neon-red); }
+        .nav-item:nth-child(5) { --neon-color: var(--neon-blue); }
+        .nav-item:nth-child(6) { --neon-color: var(--neon-purple); }
+        
+        @keyframes glowFlow {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 0% 200%; }
+        }
+        .nav-item:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Welcome to My Portfolio</h1>
+    <div class="nav-grid">
+        <a href="about.html" class="nav-item">About Me</a>
+        <a href="edu.html" class="nav-item">Education</a>
+        <a href="skills.html" class="nav-item">Skills</a>
+        <a href="projects.html" class="nav-item">Projects</a>
+        <a href="experience.html" class="nav-item">Experience</a>
+        <a href="contact.html" class="nav-item">Contact</a>
+    </div>
+</body>
+</html>
