@@ -4,12 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skills | SitiNurfizah</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
+            --neon-blue: #0ff0fc;
+            --neon-purple: #9d00ff;
             --neon-pink: #ff2a6d;
+            --neon-red: #ff073a;
             --pastel-blue: #D4F1F9;
             --pastel-peach: #FFE5D4;
         }
+        
+        /* Fixed Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 0.5rem 0;
+        }
+        .nav-grid {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        .nav-item {
+            padding: 0.8rem 1.2rem;
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            position: relative;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+        .nav-item:hover {
+            color: var(--neon-pink);
+        }
+        .nav-item::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--neon-color);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+        .nav-item:hover::before {
+            transform: scaleX(1);
+        }
+        .nav-about { --neon-color: var(--neon-blue); }
+        .nav-edu { --neon-color: var(--neon-purple); }
+        .nav-skills { --neon-color: var(--neon-pink); }
+        .nav-projects { --neon-color: var(--neon-red); }
+        .nav-exp { --neon-color: var(--neon-blue); }
+        .nav-contact { --neon-color: var(--neon-purple); }
+
+        /* Main Content */
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-peach));
@@ -20,11 +78,11 @@
         }
         .container {
             max-width: 900px;
-            margin: 2rem auto;
-            padding: 1.5rem;
+            margin: 5rem auto 2rem;
+            padding: 2rem;
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             position: relative;
             overflow: hidden;
         }
@@ -34,7 +92,7 @@
             top: 0;
             left: 0;
             bottom: 0;
-            width: 2px;
+            width: 3px;
             background: linear-gradient(to bottom, transparent, var(--neon-pink), transparent);
             background-size: 100% 200%;
             animation: glowFlow 2.5s linear infinite;
@@ -43,70 +101,328 @@
             0% { background-position: 0% 0%; }
             100% { background-position: 0% 200%; }
         }
+
+        /* 3D Bubble Columns */
+        .bubble-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .bubble-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.8rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transform-style: preserve-3d;
+            transform: perspective(500px) rotateY(0deg);
+        }
+        
+        .bubble-card::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--bubble-glow), transparent 70%);
+            opacity: 0.2;
+            transition: all 0.5s;
+        }
+        
+        .bubble-card:hover {
+            transform: perspective(500px) rotateY(5deg) translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            border-color: var(--bubble-accent);
+        }
+        
+        .bubble-card:hover::before {
+            transform: rotate(15deg);
+        }
+        
+        /* Bubble Types */
+        .tech-bubble {
+            --bubble-accent: var(--neon-blue);
+            --bubble-glow: var(--neon-blue);
+        }
+        .professional-bubble {
+            --bubble-accent: var(--neon-purple);
+            --bubble-glow: var(--neon-purple);
+        }
+        .cert-bubble {
+            --bubble-accent: var(--neon-pink);
+            --bubble-glow: var(--neon-pink);
+        }
+        
+        /* Bubble Headers */
+        .bubble-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        .bubble-icon {
+            font-size: 2.2rem;
+            margin-right: 1rem;
+            color: var(--bubble-accent);
+            text-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .bubble-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--bubble-accent);
+            margin: 0;
+            letter-spacing: -0.5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        /* Skill Items */
+        .skill-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            padding-left: 1.8rem;
+            position: relative;
+            z-index: 2;
+        }
+        .skill-item::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--bubble-accent);
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+        .skill-name {
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+        .skill-level {
+            color: #666;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+        
+        /* Certification Items */
+        .cert-item {
+            margin-bottom: 1.2rem;
+            padding-left: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        .cert-item::before {
+            content: "🎓";
+            position: absolute;
+            left: 0;
+            filter: drop-shadow(0 0 2px rgba(0,0,0,0.1));
+        }
+        
+        /* Main Header */
         h1 {
             color: var(--neon-pink);
-            border-bottom: 2px solid rgba(0,0,0,0.1);
-            padding-bottom: 0.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.8rem;
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.05);
+            position: relative;
+            letter-spacing: -1px;
         }
-        h2 {
-            margin-top: 1.5rem;
-            color: var(--neon-pink);
+        h1::after {
+            content: "";
+            display: block;
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(to right, var(--neon-pink), transparent);
+            margin: 0.8rem auto 0;
+            border-radius: 2px;
         }
+        
+        /* Photo Spot */
         .photo-spot {
-            float: right;
-            width: 150px;
-            height: 150px;
-            margin: 0 0 1rem 1rem;
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
             border: 3px solid white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            background: #eee;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            background: #eee url('your-image.jpg') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #999;
+            position: relative;
+            overflow: hidden;
+        }
+        .photo-spot::before {
+            content: "📜";
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.1;
+        }
+        
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 2rem;
+            padding: 0.7rem 1.5rem;
+            background: white;
+            border-radius: 50px;
+            color: var(--neon-pink);
+            text-decoration: none;
+            border: 2px solid var(--neon-pink);
+            transition: all 0.3s;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        .back-link:hover {
+            background: var(--neon-pink);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,42,109,0.3);
+        }
+        .back-link i {
+            margin-right: 0.5rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-grid {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+            .container {
+                margin-top: 7rem;
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            .bubble-columns {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Fixed Navigation -->
+    <header>
+        <div class="nav-grid">
+            <a href="index.html" class="nav-item nav-about"><i class="fas fa-home"></i> Home</a>
+            <a href="about.html" class="nav-item nav-about"><i class="fas fa-user"></i> About</a>
+            <a href="education.html" class="nav-item nav-edu"><i class="fas fa-graduation-cap"></i> Education</a>
+            <a href="skills.html" class="nav-item nav-skills"><i class="fas fa-code"></i> Skills</a>
+            <a href="experience.html" class="nav-item nav-exp"><i class="fas fa-briefcase"></i> Experience</a>
+            <a href="contact.html" class="nav-item nav-contact"><i class="fas fa-envelope"></i> Contact</a>
+        </div>
+    </header>
+
+    <!-- Page Content -->
     <div class="container">
         <h1>Skills & Certifications</h1>
-        <div class="photo-spot">[Certifications]</div>
         
-        <h2>Technical & Digital Skills</h2>
-        <ul>
-            <li>Microsoft Office Suite (Word, Excel, PowerPoint) – Intermediate</li>
-            <li>Google Workspace (Docs, Sheets, Slides) – Intermediate</li>
-            <li>Canva & Web Design – Proficient</li>
-            <li>Data Research & Analysis – Strong Analytical Skills</li>
-            <li>Basic Programming & Cybersecurity (Kali Linux, Network Security)</li>
-            <li>Wix, GitHub, Python, Google WordPress</li>
-        </ul>
+        <div class="photo-spot">[Your Photo]</div>
         
-        <h2>Professional & Soft Skills</h2>
-        <ul>
-            <li>Logistics & Inventory Management</li>
-            <li>Customer Service & Sales Support</li>
-            <li>Marketing & Content Creation (Posters, Banners, Promotions)</li>
-            <li>Event & Technical Management</li>
-            <li>Problem-Solving & Adaptability</li>
-        </ul>
+        <div class="bubble-columns">
+            <!-- Technical Skills Column -->
+            <div class="bubble-card tech-bubble">
+                <div class="bubble-header">
+                    <div class="bubble-icon">💻</div>
+                    <h2 class="bubble-title">Technical Skills</h2>
+                </div>
+                
+                <div class="skill-item">
+                    <span class="skill-name">Microsoft Office Suite</span>
+                    <span class="skill-level">(Word, Excel, PowerPoint – Intermediate)</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">Google Workspace</span>
+                    <span class="skill-level">(Docs, Sheets, Slides – Intermediate)</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">Canva & Web Design</span>
+                    <span class="skill-level">(Proficient)</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">Data Research & Analysis</span>
+                    <span class="skill-level">(Strong Analytical Skills)</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">Basic Programming</span>
+                    <span class="skill-level">(Kali Linux, Network Security)</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">Development Tools</span>
+                    <span class="skill-level">(Wix, GitHub, Python, WordPress)</span>
+                </div>
+            </div>
+            
+            <!-- Professional Skills Column -->
+            <div class="bubble-card professional-bubble">
+                <div class="bubble-header">
+                    <div class="bubble-icon">👔</div>
+                    <h2 class="bubble-title">Professional Skills</h2>
+                </div>
+                
+                <div class="skill-item">
+                    <span class="skill-name">Logistics Management</span>
+                    <span class="skill-level">(Inventory, Supply Chain)</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">Customer Service</span>
+                    <span class="skill-level">(Sales Support, Relations)</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">Marketing Design</span>
+                    <span class="skill-level">(Posters, Banners, Promotions)</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">Event Management</span>
+                    <span class="skill-level">(Technical Coordination)</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">Problem-Solving</span>
+                    <span class="skill-level">(Adaptability, Critical Thinking)</span>
+                </div>
+            </div>
+            
+            <!-- Certifications Column -->
+            <div class="bubble-card cert-bubble">
+                <div class="bubble-header">
+                    <div class="bubble-icon">🏆</div>
+                    <h2 class="bubble-title">Certifications</h2>
+                </div>
+                
+                <div class="cert-item">
+                    <strong>Social Media Marketing</strong> - Mastered TikTok & Facebook advertising strategies and content optimization
+                </div>
+                <div class="cert-item">
+                    <strong>Microsoft Excel</strong> - Advanced data management and automation techniques
+                </div>
+                <div class="cert-item">
+                    <strong>Web Design</strong> - Professional Canva and website layout training
+                </div>
+                <div class="cert-item">
+                    <strong>Service Excellence</strong> - Quality culture and customer service standards
+                </div>
+                <div class="cert-item">
+                    <strong>Cybersecurity</strong> - CompTIA training with ethical hacking experience
+                </div>
+                <div class="cert-item">
+                    <strong>CILT Member</strong> - Chartered Institute of Logistics and Transport
+                </div>
+            </div>
+        </div>
         
-        <h2>Certifications & Training</h2>
-        <h3>Professional Certifications</h3>
-        <ul>
-            <li>Social Media Marketing & Paid Advertising (TikTok & Facebook) – Mastered digital marketing strategies, ad targeting, and content optimization</li>
-            <li>Microsoft Excel: Tips & Tricks – Improved data management, reporting efficiency, and automation techniques</li>
-            <li>Web Design & Canva Training – Gained hands-on experience in creating marketing materials and website layouts</li>
-            <li>Quality Culture & Service Excellence – Developed a strong understanding of customer service standards and quality assurance</li>
-            <li>Cybersecurity & CompTIA Training – Hands-on experience in network security, penetration testing, and ethical hacking</li>
-        </ul>
-        
-        <h3>Professional Memberships</h3>
-        <ul>
-            <li>Member of the Chartered Institute of Logistics and Transport (CILT) – Recognized as part of a global professional body for logistics and supply chain professionals</li>
-        </ul>
-        <a href="index.html">← Back to Home</a>
+        <div style="text-align: center;">
+            <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        </div>
     </div>
 </body>
 </html>
