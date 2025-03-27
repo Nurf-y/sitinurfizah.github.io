@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | SitiNurfizah</title>
+    <style>
+        :root {
+            --neon-blue: #0ff0fc;
+            --pastel-blue: #D4F1F9;
+            --pastel-peach: #FFE5D4;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-peach));
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, var(--neon-blue), transparent);
+            background-size: 100% 200%;
+            animation: glowFlow 2.5s linear infinite;
+        }
+        @keyframes glowFlow {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 0% 200%; }
+        }
+        h1 {
+            color: var(--neon-blue);
+            border-bottom: 2px solid rgba(0,0,0,0.1);
+            padding-bottom: 0.5rem;
+        }
+        .photo-spot {
+            float: right;
+            width: 150px;
+            height: 150px;
+            margin: 0 0 1rem 1rem;
+            border: 3px solid white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>About Me</h1>
+        <div class="photo-spot">[Your Photo Here]</div>
+        <p>Hello! I'm SitiNurfizah, a logistics enthusiast with a passion for data analysis, cybersecurity, and marketing. My experience spans multiple industries, from logistics and customer service to event management and technical support.</p>
+        <p>I started my career by gaining hands-on experience in store operations, cash handling, and customer interactions, which later fueled my interest in optimizing processes, analyzing data, and enhancing operational efficiency. Over time, I honed my skills in Microsoft Office, Google Workspace, and basic web design while also delving into cybersecurity and CompTIA training to broaden my expertise.</p>
+        <p>Beyond work, I enjoy reading, cooking, and spending time with my cat. I believe in continuous learning, adapting to new challenges, and making an impact through efficient solutions. Currently, I'm seeking opportunities in logistics, data analysis, or research assistant roles where I can apply my skills while continuing to grow in my field.</p>
+        <a href="index.html">← Back to Home</a>
+    </div>
+</body>
+</html>
