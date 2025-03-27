@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | SitiNurfizah</title>
+    <style>
+        :root {
+            --neon-red: #ff073a;
+            --pastel-blue: #D4F1F9;
+            --pastel-peach: #FFE5D4;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-peach));
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, var(--neon-red), transparent);
+            background-size: 100% 200%;
+            animation: glowFlow 2.5s linear infinite;
+        }
+        @keyframes glowFlow {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 0% 200%; }
+        }
+        h1 {
+            color: var(--neon-red);
+            border-bottom: 2px solid rgba(0,0,0,0.1);
+            padding-bottom: 0.5rem;
+        }
+        h2 {
+            margin-top: 1.5rem;
+            color: var(--neon-red);
+        }
+        .photo-spot {
+            float: right;
+            width: 150px;
+            height: 150px;
+            margin: 0 0 1rem 1rem;
+            border: 3px solid white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Projects & Experience</h1>
+        <div class="photo-spot">[Event Photos]</div>
+        
+        <h2>1. Head of Technical & Media – Malaysia Day Poster Competition (Web Design Club) | 2022</h2>
+        <ul>
+            <li>Led the technical setup and media coordination for 55+ participants</li>
+            <li>Integrated background music, Google Forms, and video montages for a smooth event experience</li>
+        </ul>
+        
+        <h2>2. Media Committee Member – Volunteer Malaysia Club (VM Club) | 2020 – 2023</h2>
+        <ul>
+            <li>Designed weekly posters for community programs and public announcements</li>
+            <li>Created disaster awareness materials under tight deadlines for fast information dissemination</li>
+        </ul>
+        
+        <h2>3. Event Committee Member – Madani Sales Carnival, Hari Raya Celebration & Iftar Ceremony (ANGKASA) | 2024</h2>
+        <ul>
+            <li>Designed banners, posters, and promotional materials</li>
+            <li>Assisted in organizing and distributing 100 hampers & 100 gift bags</li>
+            <li>Took on an emcee role for corporate events</li>
+        </ul>
+        <a href="index.html">← Back to Home</a>
+    </div>
+</body>
+</html>
