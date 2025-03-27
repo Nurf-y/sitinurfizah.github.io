@@ -1,0 +1,47 @@
+/* styles.css - Additional Animations for NURF Theme */
+
+/* 1. Photo hover animation */
+.photo-spot {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.photo-spot:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+/* 2. Subtle background pulse (for index.html) */
+body.index-page {
+    animation: bgPulse 15s infinite alternate;
+}
+@keyframes bgPulse {
+    0% { background: linear-gradient(135deg, #D4F1F9, #FFE5D4); }
+    50% { background: linear-gradient(135deg, #FFE5D4, #D4F1F9); }
+    100% { background: linear-gradient(135deg, #D4F1F9, #FFE5D4); }
+}
+
+/* 3. Text fade-in for sections */
+.container {
+    animation: fadeIn 0.8s ease-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 4. Button hover effect (for index.html navigation) */
+.nav-item {
+    transition: all 0.3s;
+}
+.nav-item:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+/* 5. Neon text glow (optional) */
+h1, h2 {
+    text-shadow: 0 0 5px rgba(255,255,255,0.3);
+    transition: text-shadow 0.3s;
+}
+h1:hover, h2:hover {
+    text-shadow: 0 0 10px var(--neon-color);
+}
