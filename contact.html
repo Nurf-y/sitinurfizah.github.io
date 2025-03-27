@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | SitiNurfizah</title>
+    <style>
+        :root {
+            --neon-purple: #9d00ff;
+            --pastel-blue: #D4F1F9;
+            --pastel-peach: #FFE5D4;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-peach));
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, var(--neon-purple), transparent);
+            background-size: 100% 200%;
+            animation: glowFlow 2.5s linear infinite;
+        }
+        @keyframes glowFlow {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 0% 200%; }
+        }
+        h1 {
+            color: var(--neon-purple);
+            border-bottom: 2px solid rgba(0,0,0,0.1);
+            padding-bottom: 0.5rem;
+        }
+        .photo-spot {
+            float: right;
+            width: 150px;
+            height: 150px;
+            margin: 0 0 1rem 1rem;
+            border: 3px solid white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+        }
+        a {
+            color: var(--neon-purple);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Contact Information</h1>
+        <div class="photo-spot">[Location Map]</div>
+        <p>📍 Location: Sabah, Malaysia</p>
+        <p>📌 Email: sitinurfizah@outlook.com</p>
+        <p>📄 LinkedIn: <a href="https://linkedin.com/in/sitinurfizah-mbr-35003534a" target="_blank">linkedin.com/in/sitinurfizah-mbr-35003534a</a></p>
+        <a href="index.html">← Back to Home</a>
+    </div>
+</body>
+</html>
