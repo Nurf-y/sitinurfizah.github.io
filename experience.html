@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience | SitiNurfizah</title>
+    <style>
+        :root {
+            --neon-blue: #0ff0fc;
+            --pastel-blue: #D4F1F9;
+            --pastel-peach: #FFE5D4;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-peach));
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, var(--neon-blue), transparent);
+            background-size: 100% 200%;
+            animation: glowFlow 2.5s linear infinite;
+        }
+        @keyframes glowFlow {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 0% 200%; }
+        }
+        h1 {
+            color: var(--neon-blue);
+            border-bottom: 2px solid rgba(0,0,0,0.1);
+            padding-bottom: 0.5rem;
+        }
+        h2 {
+            margin-top: 1.5rem;
+            color: var(--neon-blue);
+        }
+        .photo-spot {
+            float: right;
+            width: 150px;
+            height: 150px;
+            margin: 0 0 1rem 1rem;
+            border: 3px solid white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Work Experience</h1>
+        <div class="photo-spot">[Workplace]</div>
+        
+        <h2>Logistics Intern</h2>
+        <p>Angkatan Koperasi Kebangsaan Malaysia (ANGKASA Sendirian Berhad)<br>
+        March – July 2024</p>
+        <ul>
+            <li>Inventory & Stock Management: Managed a stock inventory of 500+ maintaining a 95% accuracy rate in tracking and restocking</li>
+            <li>Supply Chain Coordination: Assisted in processing stock transactions weekly, ensuring smooth product flow and minimizing discrepancies</li>
+            <li>Customer Service & Order Processing: Handled 30–50 customer inquiries daily, ensuring timely resolution and achieving a 90% satisfaction rate</li>
+            <li>Logistics Support for Events: Coordinated promotional events, including Jualan Madani, overseeing logistics for 200+ attendees and ensuring smooth operations</li>
+            <li>Marketing & Promotional Materials: Designed promotional materials (banners, posters, flyers), increasing event engagement by 30%</li>
+            <li>Data & Reporting Management: Recorded sales and stock movement entries, ensuring accurate reporting for financial and inventory tracking</li>
+        </ul>
+        
+        <h2>Kitchen Helper</h2>
+        <p>Green Earth Enterprise<br>
+        August 2024 – January 2025</p>
+        <ul>
+            <li>Food Preparation & Order Processing: Assisted in preparing and organizing 200+ meals daily, ensuring efficient food distribution and service</li>
+            <li>Inventory & Stock Control: Monitored kitchen supplies, ensuring timely restocking and minimizing shortages</li>
+            <li>Hygiene & Kitchen Maintenance: Maintained cleanliness and food safety standards, ensuring compliance with health regulations</li>
+        </ul>
+        
+        <h2>Restaurant Cashier & Food Packer</h2>
+        <p>The H Cafe Kelantan<br>
+        2022 – August 2023</p>
+        <ul>
+            <li>Order Processing & Customer Service: Managed and packed 150+ food orders daily, ensuring fast and accurate service</li>
+            <li>Transaction & Financial Handling: Processed RM 2,000+ in daily transactions, maintaining accurate cash balancing</li>
+            <li>Online Order Management & Record-Keeping: Handled 50+ online orders per week, ensuring precise record-keeping for smooth order fulfillment</li>
+        </ul>
+        
+        <h2>Aid Teacher – KAFA | 2020 – 2021 (KGLB)</h2>
+        <ul>
+            <li>Assisted in teaching Quranic studies and Islamic education to 30+ students per class</li>
+            <li>Managed classroom activities, ensuring an engaging and disciplined learning environment</li>
+            <li>Provided administrative support, including student attendance tracking and lesson material preparation</li>
+        </ul>
+        <a href="index.html">← Back to Home</a>
+    </div>
+</body>
+</html>
