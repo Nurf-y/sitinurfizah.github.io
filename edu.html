@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education | SitiNurfizah</title>
+    <style>
+        :root {
+            --neon-purple: #9d00ff;
+            --pastel-blue: #D4F1F9;
+            --pastel-peach: #FFE5D4;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-peach));
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, var(--neon-purple), transparent);
+            background-size: 100% 200%;
+            animation: glowFlow 2.5s linear infinite;
+        }
+        @keyframes glowFlow {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 0% 200%; }
+        }
+        h1 {
+            color: var(--neon-purple);
+            border-bottom: 2px solid rgba(0,0,0,0.1);
+            padding-bottom: 0.5rem;
+        }
+        h2 {
+            margin-top: 1.5rem;
+            color: var(--neon-purple);
+        }
+        .photo-spot {
+            float: right;
+            width: 150px;
+            height: 150px;
+            margin: 0 0 1rem 1rem;
+            border: 3px solid white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Education</h1>
+        <div class="photo-spot">[UMK Campus]</div>
+        <h2>Universiti Malaysia Kelantan (UMK) | 2020–2024</h2>
+        <p>Bachelor's Degree in Entrepreneurship (Logistics & Distribution Trade)</p>
+        <ul>
+            <li>Gained expertise in supply chain management, logistics strategy, and market research</li>
+            <li>Developed strong analytical and business decision-making skills through coursework and real-world projects</li>
+        </ul>
+        
+        <h2>Final Year Project – Reverse Logistics Research</h2>
+        <p>Project Title: Factors Influencing Customer Satisfaction on Reverse Logistics in Shopee Among University Students in the Eastern State of Malaysia</p>
+        <ul>
+            <li>Role: Researcher & Data Analyst</li>
+            <li>Conducted extensive research on reverse logistics trends</li>
+            <li>Analyzed survey data to determine customer satisfaction factors</li>
+            <li>Collected and analyzed responses from 150 participants across Malaysia</li>
+            <li>Assisted supervisor in finding relevant articles and structuring research papers</li>
+        </ul>
+        
+        <h2>Sekolah Menengah Kebangsaan Sook | 2017</h2>
+        <ul>
+            <li>Sijil Pelajaran Malaysia (SPM) – Built a strong academic foundation in analytical thinking, problem-solving, and communication</li>
+            <li>Sijil Tinggi Persekolahan Malaysia (STPM) – Strengthened research, data analysis, and critical thinking skills</li>
+            <li>Malaysian University English Test (MUET) – Band 4: Demonstrated proficiency in reading, writing, listening, and speaking</li>
+        </ul>
+        <a href="index.html">← Back to Home</a>
+    </div>
+</body>
+</html>
