@@ -4,60 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me | SitiNurfizah</title>
-    <style>
-        :root {
-            --neon-blue: #0ff0fc;
-            --pastel-blue: #D4F1F9;
-            --pastel-peach: #FFE5D4;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-peach));
-            color: #333;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        .container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 1.5rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            position: relative;
-            overflow: hidden;
-        }
-        .container::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, transparent, var(--neon-blue), transparent);
-            background-size: 100% 200%;
-            animation: glowFlow 2.5s linear infinite;
-        }
-        @keyframes glowFlow {
-            0% { background-position: 0% 0%; }
-            100% { background-position: 0% 200%; }
-        }
-        h1 {
-            color: var(--neon-blue);
-            border-bottom: 2px solid rgba(0,0,0,0.1);
-            padding-bottom: 0.5rem;
-        }
-        .photo-spot {
-            float: right;
-            width: 150px;
-            height: 150px;
-            margin: 0 0 1rem 1rem;<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me | SitiNurfizah</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --neon-blue: #0ff0fc;
@@ -93,6 +41,10 @@
             font-weight: 600;
             position: relative;
             border-radius: 50px;
+            transition: all 0.3s;
+        }
+        .nav-item:hover {
+            color: var(--neon-blue);
         }
         .nav-item::before {
             content: "";
@@ -127,10 +79,10 @@
         .container {
             max-width: 900px;
             margin: 5rem auto 2rem;
-            padding: 1.5rem;
+            padding: 2rem;
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             position: relative;
             overflow: hidden;
         }
@@ -140,7 +92,7 @@
             top: 0;
             left: 0;
             bottom: 0;
-            width: 2px;
+            width: 3px;
             background: linear-gradient(to bottom, transparent, var(--neon-blue), transparent);
             background-size: 100% 200%;
             animation: glowFlow 2.5s linear infinite;
@@ -150,69 +102,118 @@
             100% { background-position: 0% 200%; }
         }
 
-        /* Logistic Bubbles */
-        .bubble {
+        /* 3D Bubble Cards */
+        .bubble-card {
             background: white;
             border-radius: 20px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
             border: 2px solid transparent;
-            transition: all 0.3s;
+            transform-style: preserve-3d;
+            transform: perspective(500px) rotateY(0deg);
+            background-image: var(--card-bg);
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
         }
-        .bubble::after {
+        
+        .bubble-card::before {
             content: "";
             position: absolute;
-            top: -10px;
-            right: -10px;
-            width: 30px;
-            height: 30px;
-            background: var(--bubble-accent);
-            border-radius: 50%;
-            opacity: 0.3;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%);
+            z-index: 0;
         }
-        .bubble:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        
+        .bubble-card:hover {
+            transform: perspective(500px) rotateY(5deg) translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,212,255,0.15);
             border-color: var(--bubble-accent);
         }
         
-        /* Bubble Types */
-        .bubble-logistics {
+        /* Card Backgrounds */
+        .profile-bubble {
             --bubble-accent: var(--neon-blue);
-            animation: floatUp 4s ease-in-out infinite;
+            --card-bg: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="%230ff0fc" opacity="0.05" d="M0,0 L100,0 L100,100 L0,100 Z"/></svg>');
         }
-        .bubble-tech {
+        .skills-bubble {
             --bubble-accent: var(--neon-purple);
-            animation: floatUp 4s ease-in-out infinite 0.5s;
+            --card-bg: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><circle fill="%239d00ff" opacity="0.05" cx="50" cy="50" r="50"/></svg>');
         }
-        .bubble-personal {
+        .personal-bubble {
             --bubble-accent: var(--neon-pink);
-            animation: floatUp 4s ease-in-out infinite 1s;
+            --card-bg: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon fill="%23ff2a6d" opacity="0.05" points="50,0 100,100 0,100"/></svg>');
         }
         
-        @keyframes floatUp {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        /* Bubble Headers */
+        .bubble-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
         }
-        
-        /* Logistic Icons */
         .bubble-icon {
-            font-size: 2rem;
-            margin-right: 1rem;
-            float: left;
+            font-size: 2.5rem;
+            margin-right: 1.2rem;
+            color: var(--bubble-accent);
+            text-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .bubble-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--bubble-accent);
+            margin: 0;
+            letter-spacing: -0.5px;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.05);
+            position: relative;
+        }
+        .bubble-title::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--bubble-accent);
+            border-radius: 3px;
+        }
+        
+        /* 3D Text Effect */
+        h1 {
+            color: var(--neon-blue);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.8rem;
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.05);
+            position: relative;
+            letter-spacing: -1px;
+        }
+        h1::after {
+            content: "";
+            display: block;
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(to right, var(--neon-blue), transparent);
+            margin: 0.8rem auto 0;
+            border-radius: 2px;
         }
         
         /* Photo Spot */
         .photo-spot {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 1.5rem;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 2rem;
             border-radius: 50%;
             border: 3px solid white;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             background: #eee url('your-photo.jpg') center/cover;
             display: flex;
             align-items: center;
@@ -222,73 +223,81 @@
             overflow: hidden;
         }
         .photo-spot::before {
-            content: "📦";
+            content: "👋";
             position: absolute;
-            font-size: 3rem;
+            font-size: 3.5rem;
             opacity: 0.1;
         }
         
-        h1 {
-            color: var(--neon-blue);
-            text-align: center;
-            margin-bottom: 2rem;
+        /* Content Styles */
+        .bubble-content {
             position: relative;
+            z-index: 2;
+            line-height: 1.7;
         }
-        h1::after {
-            content: "";
-            display: block;
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(to right, var(--neon-blue), transparent);
-            margin: 0.5rem auto 0;
+        .bubble-content p {
+            margin-bottom: 1.2rem;
         }
         
+        /* Back Link */
         .back-link {
-            display: inline-block;
-            margin-top: 1rem;
-            padding: 0.5rem 1rem;
+            display: inline-flex;
+            align-items: center;
+            margin-top: 2rem;
+            padding: 0.7rem 1.5rem;
             background: white;
             border-radius: 50px;
             color: var(--neon-blue);
             text-decoration: none;
-            border: 1px solid var(--neon-blue);
+            border: 2px solid var(--neon-blue);
             transition: all 0.3s;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
         }
         .back-link:hover {
             background: var(--neon-blue);
             color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,212,255,0.3);
+        }
+        .back-link i {
+            margin-right: 0.5rem;
         }
         
-        /* Conveyor Belt Animation */
-        @keyframes conveyorBelt {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        .conveyor-effect {
-            height: 3px;
-            background: repeating-linear-gradient(
-                90deg,
-                var(--neon-blue),
-                var(--neon-blue) 20px,
-                transparent 20px,
-                transparent 40px
-            );
-            animation: conveyorBelt 2s linear infinite;
-            margin: 2rem 0;
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-grid {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+            .container {
+                margin-top: 7rem;
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            .bubble-card {
+                padding: 1.5rem;
+            }
+            .photo-spot {
+                width: 140px;
+                height: 140px;
+            }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Fixed Navigation -->
     <header>
         <div class="nav-grid">
-            <a href="about.html" class="nav-item nav-about">About</a>
-            <a href="edu.html" class="nav-item nav-edu">Education</a>
-            <a href="skills.html" class="nav-item nav-skills">Skills</a>
-            <a href="projects.html" class="nav-item nav-projects">Projects</a>
-            <a href="experience.html" class="nav-item nav-exp">Experience</a>
-            <a href="contact.html" class="nav-item nav-contact">Contact</a>
+            <a href="index.html" class="nav-item nav-about"><i class="fas fa-home"></i> Home</a>
+            <a href="about.html" class="nav-item nav-about"><i class="fas fa-user"></i> About</a>
+            <a href="education.html" class="nav-item nav-edu"><i class="fas fa-graduation-cap"></i> Education</a>
+            <a href="skills.html" class="nav-item nav-skills"><i class="fas fa-code"></i> Skills</a>
+            <a href="projects.html" class="nav-item nav-projects"><i class="fas fa-project-diagram"></i> Projects</a>
+            <a href="experience.html" class="nav-item nav-exp"><i class="fas fa-briefcase"></i> Experience</a>
+            <a href="contact.html" class="nav-item nav-contact"><i class="fas fa-envelope"></i> Contact</a>
         </div>
     </header>
 
@@ -296,53 +305,47 @@
     <div class="container">
         <h1>About Me</h1>
         
-        <div class="photo-spot"></div>
+        <div class="photo-spot">[profile pic.jpg]</div>
         
-        <div class="conveyor-effect"></div>
-        
-        <div class="bubble bubble-logistics">
-            <div class="bubble-icon">🚛</div>
-            <h2>Logistics Enthusiast</h2>
-            <p>I'm passionate about optimizing supply chains and creating efficient systems. My experience in inventory management and logistics coordination has given me hands-on understanding of warehouse operations and distribution networks.</p>
+        <!-- Profile Bubble -->
+        <div class="bubble-card profile-bubble">
+            <div class="bubble-header">
+                <div class="bubble-icon">👩‍💼</div>
+                <h2 class="bubble-title">Professional Profile</h2>
+            </div>
+            <div class="bubble-content">
+                <p>Hello! I'm SitiNurfizah, a logistics enthusiast with a passion for data analysis, cybersecurity, and marketing. My experience spans multiple industries, from logistics and customer service to event management and technical support.</p>
+                <p>I started my career by gaining hands-on experience in store operations, cash handling, and customer interactions, which later fueled my interest in optimizing processes, analyzing data, and enhancing operational efficiency.</p>
+            </div>
         </div>
         
-        <div class="bubble bubble-tech">
-            <div class="bubble-icon">💻</div>
-            <h2>Tech Explorer</h2>
-            <p>From cybersecurity to data analysis, I love exploring how technology can revolutionize logistics. My toolkit includes Python, Excel wizardry, and even some ethical hacking skills from my CompTIA training.</p>
+        <!-- Skills Bubble -->
+        <div class="bubble-card skills-bubble">
+            <div class="bubble-header">
+                <div class="bubble-icon">🛠️</div>
+                <h2 class="bubble-title">Skills & Expertise</h2>
+            </div>
+            <div class="bubble-content">
+                <p>Over time, I've honed my skills in Microsoft Office, Google Workspace, and basic web design while also delving into cybersecurity and CompTIA training to broaden my expertise.</p>
+                <p>Currently, I'm seeking opportunities in logistics, data analysis, or research assistant roles where I can apply my skills while continuing to grow in my field.</p>
+            </div>
         </div>
         
-        <div class="bubble bubble-personal">
-            <div class="bubble-icon">🐱</div>
-            <h2>Beyond Work</h2>
-            <p>When I'm not optimizing supply chains, you'll find me reading industry blogs, experimenting with new recipes (logistics for ingredients!), or playing with my cat - who ironically hates boxes despite my career choice!</p>
+        <!-- Personal Bubble -->
+        <div class="bubble-card personal-bubble">
+            <div class="bubble-header">
+                <div class="bubble-icon">🌟</div>
+                <h2 class="bubble-title">Personal Interests</h2>
+            </div>
+            <div class="bubble-content">
+                <p>Beyond work, I enjoy reading, cooking, and spending time with my cat. I believe in continuous learning, adapting to new challenges, and making an impact through efficient solutions.</p>
+                <p>When I'm not optimizing supply chains, you'll find me reading industry blogs, experimenting with new recipes (logistics for ingredients!), or playing with my cat - who ironically hates boxes despite my career choice!</p>
+            </div>
         </div>
         
         <div style="text-align: center;">
-            <a href="index.html" class="back-link">← Back to Home</a>
+            <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
         </div>
-    </div>
-</body>
-</html>
-            border: 3px solid white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            background: #eee;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-        }
-    </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div class="container">
-        <h1>About Me</h1>
-        <div class="photo-spot">[Your Photo Here]</div>
-        <p>Hello! I'm SitiNurfizah, a logistics enthusiast with a passion for data analysis, cybersecurity, and marketing. My experience spans multiple industries, from logistics and customer service to event management and technical support.</p>
-        <p>I started my career by gaining hands-on experience in store operations, cash handling, and customer interactions, which later fueled my interest in optimizing processes, analyzing data, and enhancing operational efficiency. Over time, I honed my skills in Microsoft Office, Google Workspace, and basic web design while also delving into cybersecurity and CompTIA training to broaden my expertise.</p>
-        <p>Beyond work, I enjoy reading, cooking, and spending time with my cat. I believe in continuous learning, adapting to new challenges, and making an impact through efficient solutions. Currently, I'm seeking opportunities in logistics, data analysis, or research assistant roles where I can apply my skills while continuing to grow in my field.</p>
-        <a href="index.html">← Back to Home</a>
     </div>
 </body>
 </html>
