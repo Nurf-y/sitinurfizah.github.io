@@ -16,7 +16,7 @@
             --pastel-peach: #FFE5D4;
         }
         
-        /* Fixed Navigation with Glow */
+        /* Fixed Navigation */
         header {
             position: fixed;
             top: 0;
@@ -45,7 +45,6 @@
         }
         .nav-item:hover {
             color: var(--neon-purple);
-            text-shadow: 0 0 10px rgba(157,0,255,0.3);
         }
         .nav-item::before {
             content: "";
@@ -57,7 +56,6 @@
             background: var(--neon-color);
             transform: scaleX(0);
             transition: transform 0.3s;
-            box-shadow: 0 0 15px var(--neon-color);
         }
         .nav-item:hover::before {
             transform: scaleX(1);
@@ -69,42 +67,7 @@
         .nav-exp { --neon-color: var(--neon-blue); }
         .nav-contact { --neon-color: var(--neon-purple); }
 
-        /* Floating Bear Mascot */
-        .bear-mascot {
-            position: fixed;
-            bottom: 20px;
-            left: -200px;
-            width: 150px;
-            height: 150px;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="%23FFB6C1"/><circle cx="35" cy="40" r="5" fill="%23333"/><circle cx="65" cy="40" r="5" fill="%23333"/><path d="M40,65 Q50,75 60,65" stroke="%23333" stroke-width="2" fill="none"/><circle cx="30" cy="30" r="3" fill="%23fff"/><circle cx="70" cy="30" r="3" fill="%23fff"/></svg>');
-            background-size: contain;
-            background-repeat: no-repeat;
-            z-index: 999;
-            animation: bearWalk 30s linear infinite, bearFloat 3s ease-in-out infinite;
-            filter: drop-shadow(0 0 10px rgba(157,0,255,0.5));
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-        
-        @keyframes bearWalk {
-            0% { left: -200px; transform: scaleX(1); }
-            49% { transform: scaleX(1); }
-            50% { left: calc(100% + 200px); transform: scaleX(-1); }
-            99% { transform: scaleX(-1); }
-            100% { left: -200px; transform: scaleX(1); }
-        }
-        
-        @keyframes bearFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-        
-        .bear-mascot:hover {
-            animation-play-state: paused;
-            transform: scale(1.2) rotate(-10deg);
-        }
-
-        /* Main Content with Floating Effect */
+        /* Main Content */
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-peach));
@@ -112,16 +75,7 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            animation: floatBackground 15s ease-in-out infinite;
         }
-        
-        @keyframes floatBackground {
-            0%, 100% { background-position: 0% 0%; }
-            25% { background-position: 100% 0%; }
-            50% { background-position: 100% 100%; }
-            75% { background-position: 0% 100%; }
-        }
-
         .container {
             max-width: 900px;
             margin: 5rem auto 2rem;
@@ -131,14 +85,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             position: relative;
             overflow: hidden;
-            animation: containerFloat 6s ease-in-out infinite;
         }
-        
-        @keyframes containerFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
         .container::before {
             content: "";
             position: absolute;
@@ -155,7 +102,7 @@
             100% { background-position: 0% 200%; }
         }
 
-        /* 3D Education Cards with Advanced Effects */
+        /* 3D Education Cards */
         .education-card {
             background: white;
             border-radius: 20px;
@@ -172,7 +119,6 @@
             background-size: cover;
             background-position: center;
             background-blend-mode: overlay;
-            z-index: 2;
         }
         
         .education-card::before {
@@ -183,57 +129,30 @@
             right: 0;
             bottom: 0;
             background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%);
-            z-index: -1;
+            z-index: 0;
         }
         
         .education-card:hover {
-            transform: perspective(500px) rotateY(5deg) translateY(-10px) scale(1.02);
-            box-shadow: 0 15px 35px rgba(157,0,255,0.3);
+            transform: perspective(500px) rotateY(5deg) translateY(-10px);
+            box-shadow: 0 15px 35px rgba(157,0,255,0.15);
             border-color: var(--card-accent);
         }
         
-        /* Particle Background Effect */
-        .education-card::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: var(--card-pattern);
-            opacity: 0.1;
-            z-index: -1;
-            animation: patternMove 20s linear infinite;
-        }
-        
-        @keyframes patternMove {
-            0% { background-position: 0% 0%; }
-            100% { background-position: 100% 100%; }
-        }
-        
-        /* Card Types with Unique Effects */
+        /* Card Backgrounds */
         .card-umk {
             --card-accent: var(--neon-purple);
             --card-bg: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
-            --card-pattern: radial-gradient(circle, var(--neon-purple) 1px, transparent 1px);
-            background-size: 20px 20px;
         }
-        
         .card-project {
             --card-accent: #7d4bff;
             --card-bg: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
-            --card-pattern: linear-gradient(45deg, #7d4bff 1px, transparent 1px);
-            background-size: 20px 20px;
         }
-        
         .card-school {
             --card-accent: #b36bff;
             --card-bg: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
-            --card-pattern: linear-gradient(90deg, #b36bff 1px, transparent 1px);
-            background-size: 30px 30px;
         }
         
-        /* Card Header with Floating Icon */
+        /* Card Header */
         .card-header {
             display: flex;
             align-items: center;
@@ -246,7 +165,7 @@
             margin-right: 1.2rem;
             color: var(--card-accent);
             text-shadow: 0 0 10px rgba(0,0,0,0.1);
-            animation: bounce 2s ease-in-out infinite, iconGlow 3s ease-in-out infinite;
+            animation: bounce 2s ease-in-out infinite;
         }
         
         @keyframes bounce {
@@ -254,26 +173,15 @@
             50% { transform: translateY(-10px); }
         }
         
-        @keyframes iconGlow {
-            0%, 100% { filter: drop-shadow(0 0 5px var(--card-accent)); }
-            50% { filter: drop-shadow(0 0 15px var(--card-accent)); }
-        }
-        
-        /* 3D Text Effect with Gradient */
         .card-title {
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--card-accent);
             margin: 0;
             letter-spacing: -0.5px;
-            text-shadow: 3px 3px 0 rgba(0,0,0,0.05);
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.05);
             position: relative;
-            background: linear-gradient(135deg, var(--card-accent), #b36bff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
         }
-        
         .card-title::after {
             content: "";
             position: absolute;
@@ -281,27 +189,41 @@
             left: 0;
             width: 50px;
             height: 3px;
-            background: linear-gradient(to right, var(--card-accent), transparent);
+            background: var(--card-accent);
             border-radius: 3px;
-            animation: linePulse 2s ease-in-out infinite;
         }
         
-        @keyframes linePulse {
-            0%, 100% { width: 50px; opacity: 1; }
-            50% { width: 70px; opacity: 0.7; }
+        /* Content Styles */
+        .card-content {
+            position: relative;
+            z-index: 2;
+        }
+        .card-content p {
+            margin-bottom: 1.2rem;
+        }
+        .card-content ul {
+            padding-left: 1.5rem;
+        }
+        .card-content li {
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+        .card-content li::before {
+            content: "▹";
+            position: absolute;
+            left: -1.5rem;
+            color: var(--card-accent);
         }
         
-        /* Diploma Animation with Floating Effect */
+        /* Diploma Animation */
         .diploma-icon {
             display: inline-block;
             font-size: 2rem;
-            animation: scrollOpen 2s ease-in-out infinite, float 3s ease-in-out infinite;
+            animation: scrollOpen 2s ease-in-out infinite;
             transform-origin: top center;
             color: var(--card-accent);
             margin-top: 1rem;
-            filter: drop-shadow(0 0 5px rgba(157,0,255,0.3));
         }
-        
         @keyframes scrollOpen {
             0%, 100% { transform: scaleY(1) rotate(0deg); }
             25% { transform: scaleY(1.1) rotate(5deg); }
@@ -309,28 +231,16 @@
             75% { transform: scaleY(1.1) rotate(2deg); }
         }
         
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        /* Main Header with Neon Effect */
+        /* Main Header */
         h1 {
             color: var(--neon-purple);
             text-align: center;
             margin-bottom: 2rem;
             font-size: 2.8rem;
-            text-shadow: 0 0 10px rgba(157,0,255,0.3);
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.05);
             position: relative;
             letter-spacing: -1px;
-            animation: neonPulse 2s ease-in-out infinite;
         }
-        
-        @keyframes neonPulse {
-            0%, 100% { text-shadow: 0 0 10px rgba(157,0,255,0.3); }
-            50% { text-shadow: 0 0 20px rgba(157,0,255,0.6); }
-        }
-        
         h1::after {
             content: "";
             display: block;
@@ -339,15 +249,9 @@
             background: linear-gradient(to right, var(--neon-purple), transparent);
             margin: 0.8rem auto 0;
             border-radius: 2px;
-            animation: lineGlow 2s ease-in-out infinite;
         }
         
-        @keyframes lineGlow {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-        
-        /* Photo Spot with Floating Effect */
+        /* Photo Spot */
         .photo-spot {
             width: 180px;
             height: 180px;
@@ -362,30 +266,15 @@
             color: #999;
             position: relative;
             overflow: hidden;
-            animation: photoFloat 4s ease-in-out infinite;
         }
-        
-        @keyframes photoFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
         .photo-spot::before {
             content: "📚";
             position: absolute;
             font-size: 3.5rem;
             opacity: 0.1;
-            animation: bookFloat 4s ease-in-out infinite;
         }
         
-        @keyframes bookFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            25% { transform: translateY(-5px) rotate(5deg); }
-            50% { transform: translateY(0) rotate(0deg); }
-            75% { transform: translateY(-5px) rotate(-5deg); }
-        }
-        
-        /* Back Link with Glow Effect */
+        /* Back Link */
         .back-link {
             display: inline-flex;
             align-items: center;
@@ -399,33 +288,18 @@
             transition: all 0.3s;
             font-weight: 600;
             box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-            animation: buttonGlow 3s ease-in-out infinite;
         }
-        
-        @keyframes buttonGlow {
-            0%, 100% { box-shadow: 0 0 10px rgba(157,0,255,0.3); }
-            50% { box-shadow: 0 0 20px rgba(157,0,255,0.6); }
-        }
-        
         .back-link:hover {
             background: var(--neon-purple);
             color: white;
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: 0 5px 20px rgba(157,0,255,0.8);
-            animation: none;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(157,0,255,0.3);
         }
-        
         .back-link i {
             margin-right: 0.5rem;
-            animation: arrowPulse 1.5s ease-in-out infinite;
         }
         
-        @keyframes arrowPulse {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(-5px); }
-        }
-        
-        /* Moving Line Animation with Glow */
+        /* Moving Line Animation */
         .conveyor-effect {
             height: 3px;
             background: repeating-linear-gradient(
@@ -435,21 +309,15 @@
                 transparent 20px,
                 transparent 40px
             );
-            animation: conveyorBelt 2s linear infinite, conveyorGlow 2s ease-in-out infinite;
+            animation: conveyorBelt 2s linear infinite;
             margin: 2rem 0;
         }
-        
         @keyframes conveyorBelt {
             0% { background-position: 0% 0%; }
             100% { background-position: 100% 0%; }
         }
         
-        @keyframes conveyorGlow {
-            0%, 100% { box-shadow: 0 0 5px rgba(157,0,255,0.3); }
-            50% { box-shadow: 0 0 15px rgba(157,0,255,0.6); }
-        }
-        
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 768px) {
             .nav-grid {
                 flex-wrap: wrap;
@@ -469,18 +337,10 @@
                 width: 140px;
                 height: 140px;
             }
-            .bear-mascot {
-                width: 100px;
-                height: 100px;
-                bottom: 10px;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Walking Bear Mascot -->
-    <div class="bear-mascot" title="Hello! I'm your coding bear!"></div>
-
     <!-- Fixed Navigation -->
     <header>
         <div class="nav-grid">
@@ -556,30 +416,5 @@
             <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
         </div>
     </div>
-
-    <script>
-        // Interactive Bear Mascot
-        const bear = document.querySelector('.bear-mascot');
-        
-        bear.addEventListener('click', () => {
-            bear.style.animationPlayState = 'paused';
-            bear.style.transform = 'scale(1.5) rotate(-15deg)';
-            setTimeout(() => {
-                bear.style.animationPlayState = 'running';
-                bear.style.transform = '';
-            }, 2000);
-        });
-        
-        // Floating diploma effect when hovering cards
-        const cards = document.querySelectorAll('.education-card');
-        cards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                const diplomas = card.querySelectorAll('.diploma-icon');
-                diplomas.forEach(d => {
-                    d.style.animation = 'scrollOpen 1s ease-in-out infinite, float 2s ease-in-out infinite';
-                });
-            });
-        });
-    </script>
 </body>
 </html>
