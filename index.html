@@ -13,25 +13,18 @@
             --pastel-blue: #D4F1F9;
             --pastel-peach: #FFE5D4;
         }  
+        
         body {
-            <!-- Fixed Navigation -->
-<header>
-    <div class="nav-grid">
-        <a href="about.html" class="nav-item nav-about">About</a>
-        <a href="edu.html" class="nav-item nav-edu">Education</a>
-        <a href="skills.html" class="nav-item nav-skills">Skills</a>
-        <a href="projects.html" class="nav-item nav-projects">Projects</a>
-        <a href="experience.html" class="nav-item nav-exp">Experience</a>
-        <a href="contact.html" class="nav-item nav-contact">Contact</a>
-    </div>
-</header>
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-peach));
             margin: 0;
             padding: 0;
             color: #333;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
-        /* Sticky Navigation */
+
+        /* Sticky Navigation with Glow */
         header {
             position: fixed;
             top: 0;
@@ -41,6 +34,7 @@
             z-index: 1000;
             padding: 0.5rem 0;
         }
+        
         .nav-grid {
             display: flex;
             justify-content: center;
@@ -49,6 +43,7 @@
             margin: 0 auto;
             padding: 0 1rem;
         }
+        
         .nav-item {
             padding: 0.8rem 1.2rem;
             border-radius: 50px;
@@ -59,6 +54,7 @@
             overflow: hidden;
             transition: all 0.3s;
         }
+        
         .nav-item::before {
             content: "";
             position: absolute;
@@ -69,10 +65,13 @@
             background: var(--neon-color);
             transform: scaleX(0);
             transition: transform 0.3s;
+            box-shadow: 0 0 10px var(--neon-color);
         }
+        
         .nav-item:hover::before {
             transform: scaleX(1);
         }
+        
         /* Color coding */
         .nav-about { --neon-color: var(--neon-blue); }
         .nav-edu { --neon-color: var(--neon-purple); }
@@ -83,11 +82,162 @@
         
         /* Page content */
         .page {
-            margin-top: 70px; /* Push content below fixed header */
+            margin-top: 70px;
             padding: 2rem;
             max-width: 900px;
             margin-left: auto;
             margin-right: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Animated Welcome Section */
+        .welcome-section {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.8);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .welcome-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--neon-purple), var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: titleFloat 3s ease-in-out infinite;
+        }
+        
+        @keyframes titleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .welcome-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: textReveal 1s forwards 0.5s;
+        }
+        
+        @keyframes textReveal {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .welcome-text span {
+            display: inline-block;
+            animation: wave 2s infinite;
+        }
+        
+        @keyframes wave {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        /* Boba Bubble Game */
+        .boba-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50vh;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .boba-bubble {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: var(--bubble-color);
+            border-radius: 50%;
+            bottom: -50px;
+            animation: floatUp 5s linear forwards;
+            cursor: pointer;
+            pointer-events: auto;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s, background 0.3s;
+        }
+        
+        @keyframes floatUp {
+            to { 
+                transform: translateY(calc(-50vh - 100px)) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .boba-bubble:hover {
+            transform: scale(1.2);
+        }
+        
+        .boba-bubble.popped {
+            animation: pop 0.3s forwards;
+        }
+        
+        @keyframes pop {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+        
+        /* Interactive Call-to-Action */
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            color: var(--neon-purple);
+            border: 2px solid var(--neon-purple);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .cta-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(157,0,255,0.1), transparent);
+            transition: all 0.5s;
+        }
+        
+        .cta-button:hover {
+            background: var(--neon-purple);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(157,0,255,0.3);
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-grid {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+            
+            .welcome-title {
+                font-size: 2rem;
+            }
+            
+            .welcome-text {
+                font-size: 1rem;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
@@ -107,8 +257,70 @@
 
     <!-- Homepage Content -->
     <div class="page">
-        <h1>Welcome to My Portfolio</h1>
-        <p>Click any section above to explore my professional journey.</p>
+        <section class="welcome-section">
+            <h1 class="welcome-title">Hello, I'm SitiNurfizah!</h1>
+            <p class="welcome-text">
+                <span>Welcome</span> <span>to</span> <span>my</span> <span>creative</span> <span>portfolio.</span> 
+                <span>I'm</span> <span>a</span> <span>passionate</span> <span>professional</span> <span>with</span> 
+                <span>expertise</span> <span>in</span> <span>logistics,</span> <span>data</span> <span>analysis,</span> 
+                <span>and</span> <span>technology.</span> <span>Explore</span> <span>my</span> <span>journey</span> 
+                <span>through</span> <span>the</span> <span>navigation</span> <span>above!</span>
+            </p>
+            <a href="about.html" class="cta-button">Explore My Journey</a>
+        </section>
     </div>
+
+    <!-- Boba Bubble Game -->
+    <div class="boba-container" id="bobaGame"></div>
+
+    <script>
+        // Animated text with delay
+        document.addEventListener('DOMContentLoaded', () => {
+            const spans = document.querySelectorAll('.welcome-text span');
+            spans.forEach((span, index) => {
+                span.style.animationDelay = `${index * 0.1}s`;
+            });
+            
+            // Create boba bubbles
+            const colors = [
+                '#FF9AA2', '#FFB7B2', '#FFDAC1', '#E2F0CB', 
+                '#B5EAD7', '#C7CEEA', '#F8B195', '#F67280'
+            ];
+            
+            const bobaContainer = document.getElementById('bobaGame');
+            
+            function createBubble() {
+                const bubble = document.createElement('div');
+                bubble.className = 'boba-bubble';
+                bubble.style.left = `${Math.random() * 100}%`;
+                bubble.style.setProperty('--bubble-color', colors[Math.floor(Math.random() * colors.length)]);
+                bubble.style.animationDuration = `${5 + Math.random() * 10}s`;
+                
+                bubble.addEventListener('click', () => {
+                    bubble.classList.add('popped');
+                    bubble.style.setProperty('--bubble-color', colors[Math.floor(Math.random() * colors.length)]);
+                    setTimeout(() => {
+                        bubble.remove();
+                    }, 300);
+                });
+                
+                bobaContainer.appendChild(bubble);
+                
+                setTimeout(() => {
+                    bubble.remove();
+                }, 5000);
+            }
+            
+            // Start bubble creation
+            setInterval(createBubble, 500);
+            
+            // More bubbles on mouse move
+            document.addEventListener('mousemove', (e) => {
+                if(e.clientY > window.innerHeight / 2) {
+                    createBubble();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
